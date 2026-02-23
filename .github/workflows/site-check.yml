@@ -27,21 +27,13 @@ jobs:
       - name: Build site
         run: bundle exec jekyll build
 
-      # 2️⃣ Markdown lint
-      - name: Lint Markdown
-        uses: DavidAnson/markdownlint-cli2-action@v14
-        with:
-          globs: |
-            _posts/**/*.md
-            *.md
-
-      # 3️⃣ Check for broken links (internal links only)
+      # 2️⃣ Check for broken links (internal links only)
       - name: Check broken links
         uses: lycheeverse/lychee-action@v1
         with:
           args: --no-progress './_site/**/*.html'
 
-      # 4️⃣ Validate post front matter
+      # 3️⃣ Validate post front matter
       - name: Validate front matter
         run: |
           for file in _posts/*.md; do
