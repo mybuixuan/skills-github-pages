@@ -24,3 +24,9 @@ You can practice Pilates on a simple mat using bodyweight exercises, or on a ref
 Pilates doesn’t just change how you look — it transforms how you move and feel. After a session, you stand taller, breathe deeper, and feel more connected to your body.
 
 > “In 10 sessions you’ll feel the difference, in 20 you’ll see the difference, and in 30 you’ll have a whole new body.”
+
+# Blog Posts
+
+{% for post in site.posts %}
+- [{{ post.title }}]({{ post.url }}) — {{ post.date | date: "%B %d, %Y" }}
+{% endfor %}
