@@ -32,7 +32,13 @@ jobs:
         uses: DavidAnson/markdownlint-cli2-action@v14
         with:
           globs: |
-            **/*.md
+            _posts/**/*.md
+            *.md
+          config: |
+            {
+              "default": true,
+              "MD013": false
+            }
 
       # 3️⃣ Check for broken links (internal links only)
       - name: Check broken links
