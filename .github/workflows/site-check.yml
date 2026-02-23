@@ -1,0 +1,55 @@
+name: Site Quality Checks
+
+on:
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build-and-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Setup Ruby for Jekyll
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      # Install dependencies
+      - name: Install gems
+        run: bundle install
+
+      # 1️⃣ Jekyll build check
+      - name: Build site
+        run: bundle exec jekyll build
+
+      # 2️⃣ Markdown lint
+      - name: Lint Markdown
+        uses: DavidAnson/markdownlint-cli2-action@v14
+        with:
+          globs: |
+            **/*.md
+
+      # 3️⃣ Check for broken links (internal links only)
+      - name: Check broken links
+        uses: lycheeverse/lychee-action@v1
+        with:
+          args: --no-progress './_site/**/*.html'
+
+      # 4️⃣ Validate post front matter
+      - name: Validate front matter
+        run: |
+          for file in _posts/*.md; do
+            if ! grep -q "^title:" "$file"; then
+              echo "Missing title in $file"
+              exit 1
+            fi
+            if ! grep -q "^date:" "$file"; then
+              echo "Missing date in $file"
+              exit 1
+            fi
+          done
