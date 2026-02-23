@@ -28,5 +28,5 @@ Pilates doesn’t just change how you look — it transforms how you move and fe
 # Blog Posts
 
 {% for post in site.posts %}
-- [{{ post.title }}]({{ post.url }}) — {{ post.date | date: "%B %d, %Y" }}
+- [{{ post.title }}]({{ post.url | relative_url }}) — {{ post.date | date: "%B %d, %Y" }}
 {% endfor %}
