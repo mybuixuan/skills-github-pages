@@ -1,5 +1,4 @@
 ---
-title: "My Fitness Journey"
 date: 2026-02-22
 ---
 
