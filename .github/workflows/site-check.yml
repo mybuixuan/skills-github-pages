@@ -34,11 +34,6 @@ jobs:
           globs: |
             _posts/**/*.md
             *.md
-          config: |
-            {
-              "default": true,
-              "MD013": false
-            }
 
       # 3️⃣ Check for broken links (internal links only)
       - name: Check broken links
