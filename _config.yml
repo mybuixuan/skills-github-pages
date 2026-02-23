@@ -28,7 +28,7 @@ baseurl: "/skills-github-pages"
 url: "https://mybuixuan.github.io"
 
 # Build settings
-theme: minima
+theme: jekyll-theme-cayman
 plugins:
   - jekyll-feed
 
