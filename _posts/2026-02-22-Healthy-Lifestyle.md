@@ -1,5 +1,4 @@
 ---
-title: "Healthy Lifestyle"
 date: 2026-02-22
 ---
 
